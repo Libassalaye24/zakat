@@ -1,0 +1,147 @@
+<div class="container-fluid">
+    <div class="page-title">
+      <div class="row">
+        <div class="col-6">
+          <h3>Campaign</h3>
+        </div>
+        <div class="col-6">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a [routerLink]="'/dashboard/default'">
+                <svg class="stroke-icon">
+                  <use href="assets/svg/icon-sprite.svg#stroke-home"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="breadcrumb-item">Campaign</li>
+            <li class="breadcrumb-item active">Campaign List</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="container-fluid">
+</div>
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <!-- Individual column searching (text inputs) Starts-->
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+
+          
+          <!-- <span>Search your product from here..</span> -->
+          <div class="row">
+            <div class="col-6">
+                <h5>Campaigns List</h5>
+            </div>
+            <div class="col-3">
+            </div>
+            <div class="col-3">
+                <button  class="btn btn-primary float-end" ><i class="icon-plus"></i> New campaign</button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="product-list-custom custom-datatable">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Progress</th>
+                    <th scope="col">Donors</th>
+                    <!-- <th scope="col">Etat</th> -->
+                    <th scope="col">Created-at</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+            
+                    <td>Giving tree</td>
+                    <td>Health</td>
+                    <td >
+                        <div class="progress">
+                          <div class="progress-bar bg-primary" role="progressbar" style="width: 75%"  aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </td>
+                    <td>21</td>
+                    <!-- <td>
+                        <span class="badge badge-success">
+                            active
+                        </span>
+                    </td> -->
+                    <td>Jan 14 2022</td>
+                   
+                    <td>
+                        <div class="action">
+                            <li class="edit">
+                              <a href="#"><i class="icon-pencil-alt"></i></a>
+                            </li>
+                            <li class="delete">
+                              <a href="#"><i class="icon-trash"></i></a>
+                            </li>
+                            <li class="details">
+                                <a href="#"> <i class="icon-eye"></i></a>
+                              </li>
+                           
+                          </div>
+                    </td>
+                  </tr>
+                  <tr>
+            
+                    <td>Giving tree</td>
+                    <td>Environment</td>
+                    <td >
+                        <div class="progress">
+                          <div class="progress-bar bg-primary" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </td>
+                    <td>0</td>
+                    <!-- <td>
+                        <span class="badge badge-danger">
+                            inactive
+                        </span>
+                    </td> -->
+                    <td>Jan 14 2022</td>
+                   
+                    <td>
+                        <div class="action">
+                            <li class="edit">
+                              <a href="#"><i class="icon-pencil-alt"></i></a>
+                            </li>
+                            <li class="delete">
+                              <a href="#"><i class="icon-trash"></i></a>
+                            </li>
+                            <li class="details">
+                                <a href="#"> <i class="icon-eye"></i></a>
+                              </li>
+                           
+                          </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination pagination-sm pagination-primary float-end">
+                  <li class="page-item"><a class="page-link" href="javascript:void(0)">Previous</a></li>
+                  <li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
+                  <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
+                  <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                  <li class="page-item"><a class="page-link" href="javascript:void(0)">Next</a></li>
+                </ul>
+              </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Individual column searching (text inputs) Ends-->
+  </div>
+</div>
+<!-- Container-fluid Ends-->
