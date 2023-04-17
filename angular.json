@@ -102,8 +102,16 @@
               },
               "src/assets"
             ],
-            "styles": ["node_modules/font-awesome/scss/font-awesome.scss", "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css", "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css", "src/styles.scss"],
-            "scripts": [],
+            "styles": [
+              "node_modules/font-awesome/scss/font-awesome.scss",
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css",
+              "src/styles.scss",
+              "node_modules/izitoast/dist/css/iziToast.min.css"
+            ],
+            "scripts": [
+              "node_modules/izitoast/dist/js/iziToast.min.js"
+            ],
             "vendorChunk": true,
             "extractLicenses": false,
             "buildOptimizer": false,
@@ -166,8 +174,13 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss"],
-            "scripts": []
+            "styles": [
+              "src/styles.scss",
+              "node_modules/izitoast/dist/css/iziToast.min.css"
+            ],
+            "scripts": [
+              "node_modules/izitoast/dist/js/iziToast.min.js"
+            ]
           }
         },
         "e2e": {

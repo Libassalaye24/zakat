@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from "./shared/shared.module";
@@ -26,6 +26,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { OverlayModule } from '@angular/cdk/overlay';
 // import { CampaignListComponent } from './components/apps/campaign/campaign-list/campaign-list.component';
 // import { CampaignListComponent } from './components/apps/campaign-list/campaign-list.component';
+import { AuthInterceptor } from 'src/app/shared/midleweares/auth.interceptor';
+// import { ContactComponent } from './components/apps/contact/contact.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -35,9 +37,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     LoginComponent,
-    // CharityDahboardComponent,
-    // CampaignListComponent,
-    // CampaignListComponent,
+    // ContactComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -65,7 +66,10 @@ export function HttpLoaderFactory(http: HttpClient) {
 //     // for Core use:
     LoadingBarModule
   ],
-  providers: [ AdminGuard, CookieService],
+  providers: 
+  [ AdminGuard, CookieService,
+    // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

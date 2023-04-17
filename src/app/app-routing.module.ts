@@ -11,7 +11,7 @@ import { AdminGuard } from './shared/guard/admin.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard/default',
+    redirectTo: 'dashboard',
     pathMatch: 'full'
   },
   {

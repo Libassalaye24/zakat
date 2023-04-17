@@ -27,7 +27,7 @@ body {
       }
       .login-card {
         .login-main {
-          background-color: $dark-body-background;
+          background-color: #f3f3ff;
         }
       }
     }
@@ -471,11 +471,12 @@ body {
       }
 
       .login-main {
-        box-shadow: 0 0 37px rgba($white, 0.05);
+        // box-shadow: 0 0 37px rgba($white, 0.05);
+        box-shadow: 0 0 37px rgba(8, 21, 66, 0.05);
 
         .theme-form {
           input {
-            background-color: $dark-card-background !important;
+            background-color: #f3f3ff !important;
           }
 
           .or {

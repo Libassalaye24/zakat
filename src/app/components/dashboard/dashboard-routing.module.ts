@@ -11,10 +11,10 @@ const routes: Routes = [
   {
     path: "",
     children: [
-      {
-        path: "default",
-        component: DefaultComponent,
-      },
+      // {
+      //   path: "default",
+      //   component: DefaultComponent,
+      // },
       // {
       //   path: "ecommerce",
       //   component: EcommerceComponent,
@@ -32,7 +32,7 @@ const routes: Routes = [
       //   component: SocialComponent,
       // },
       {
-        path: "charity",
+        path: "",
         component: CharityDashboardComponent,
       },
     ],

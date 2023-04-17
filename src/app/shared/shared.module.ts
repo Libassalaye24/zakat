@@ -34,7 +34,7 @@ import { ShowOptionsDirective } from "./directives/show-options.directive";
 // import { ChatService } from "./services/chat.service";
 import { LayoutService } from "./services/layout.service";
 import { NavService } from "./services/nav.service";
-// import { TableService } from "./services/table.service";
+import { ProjectService } from "./services/project.service";
 import { NgbdSortableHeader } from "./directives/NgbdSortableHeader";
 import { DecimalPipe } from "@angular/common";
 import { SvgIconComponent } from "./components/svg-icon/svg-icon.component";
@@ -71,7 +71,7 @@ import { SwiperComponent } from './components/header/elements/swiper/swiper.comp
     SwiperComponent,
   ],
   imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, NgbModule, DragulaModule.forRoot(), TranslateModule.forRoot(), CarouselModule, SwiperModule],
-  providers: [NavService, LayoutService, DecimalPipe],
+  providers: [NavService, LayoutService, ProjectService, DecimalPipe],
   exports: [NgbModule, FormsModule, ReactiveFormsModule, TranslateModule, LoaderComponent, BreadcrumbComponent, FeatherIconsComponent, TapToTopComponent, DisableKeyPressDirective, OnlyAlphabetsDirective, OnlyNumbersDirective, NgbdSortableHeader, SvgIconComponent, SwiperModule],
 })
 export class SharedModule {}

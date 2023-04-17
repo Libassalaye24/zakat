@@ -11,6 +11,10 @@
   animation-duration: 3s;
   animation-iteration-count: infinite;
 }
+input{
+  color: black; 
+  background-color: #f3f3ff;
+}
 
 @keyframes loader {
   15% {

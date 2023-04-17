@@ -2,7 +2,7 @@
     <div class="page-title">
       <div class="row">
         <div class="col-6">
-          <h3>Campaign</h3>
+          <h3>Project</h3>
         </div>
         <div class="col-6">
           <ol class="breadcrumb">
@@ -13,8 +13,8 @@
                 </svg>
               </a>
             </li>
-            <li class="breadcrumb-item">Campaign</li>
-            <li class="breadcrumb-item active">Campaign List</li>
+            <li class="breadcrumb-item">Project</li>
+            <li class="breadcrumb-item active">Project List</li>
           </ol>
         </div>
       </div>
@@ -30,104 +30,116 @@
       <div class="card">
         <div class="card-header">
 
-          
+          <!-- <h5>Project List</h5> -->
           <!-- <span>Search your product from here..</span> -->
           <div class="row">
-            <div class="col-6">
-                <h5>Campaigns List</h5>
+            <div class="col-3">
+              <div class="">
+                <label for="formFile" class="form-label">Filter by type</label>
+                <select class="form-select" aria-label="Default select example">
+                  <option selected>Type</option>
+                  <option *ngFor="let item of typeList" value="{{item}}" >
+                    {{item}}
+                    </option>
+                </select>
+              </div>
+              
             </div>
             <div class="col-3">
+              <div class="">
+                <label for="formFile" class="form-label">Filter by status</label>
+                <select  name="selectedStatus"  class="form-select" aria-label="Default select example">
+                  <option value="" selected="selected">Status</option>
+                  <option *ngFor="let item of statusList" value="{{item}}" >
+                    {{item}}
+                    </option>
+                </select>
+              </div>
             </div>
-            <div class="col-3">
-                <button  class="btn btn-primary float-end" ><i class="icon-plus"></i> New campaign</button>
+            <div class="col-2">
+             <div style="margin-top: 20%;" class=" d-flex gap-2">
+              <button type="button" class="btn btn-primary" >Filter</button>
+              <button type="button" class="btn btn-danger">Reset</button>
+             </div>
+            </div>
+            <div class="col-4">
+              
             </div>
           </div>
         </div>
         <div class="card-body">
+          
           <div class="product-list-custom custom-datatable">
             <div class="table-responsive">
               <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">Name</th>
                     <th scope="col">Type</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Amount</th>
                     <th scope="col">Progress</th>
-                    <th scope="col">Donors</th>
-                    <!-- <th scope="col">Etat</th> -->
+                    <!-- <th scope="col">Donors</th> -->
+                    <th scope="col">Status</th>
                     <th scope="col">Created-at</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr *ngFor="let item of projects" >
             
-                    <td>Giving tree</td>
-                    <td>Health</td>
+                    <td>{{ item.type | titlecase}}</td>
+                    <td>{{ item.description | titlecase }}</td>
+                    <td>{{ item.amount | number: '1.0-0' }} FCFA</td>
                     <td >
-                        <div class="progress">
-                          <div class="progress-bar bg-primary" role="progressbar" style="width: 75%"  aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress mt-1">
+                          <div class="progress-bar bg-primary w-{{item.pourcentage}}" style="width:{{item.pourcentage}}%" role="progressbar"   aria-valuenow="{{item.pourcentage}}" aria-valuemin="0" aria-valuemax="100">
+                          </div>
                         </div>
                     </td>
-                    <td>21</td>
-                    <!-- <td>
-                        <span class="badge badge-success">
-                            active
+                    <td>
+                        <span *ngIf="item.status == 'PENDING'" class="badge badge-primary">
+                            {{ item.status }}
                         </span>
-                    </td> -->
-                    <td>Jan 14 2022</td>
+                        <span *ngIf="item.status == 'VALID'" class="badge badge-success">
+                          {{ item.status }}
+                        </span>
+                        <span *ngIf="item.status == 'INVALID'" class="badge badge-error">
+                          {{ item.status }}
+                        </span>
+                    </td>
+                    <td>
+                      {{ item.date | date :'mediumDate'}}
+
+                    </td>
                    
                     <td>
-                        <div class="action">
-                            <li class="edit">
-                              <a href="#"><i class="icon-pencil-alt"></i></a>
+                      
+                        <div class="action gap-2">
+                            <li *ngIf="item.status == 'PENDING'"  (click)="confirmerStatusChange(item._id , 'VALIDATE')" class="validate text-success " title="VALIDATE">
+                              <a type="button"><i class="icon-check"></i></a>
                             </li>
-                            <li class="delete">
-                              <a href="#"><i class="icon-trash"></i></a>
+                            <!-- <li *ngIf="item.status == 'VALID'" class="anuler">
+                              <a href="#"><i class="icon-check"></i></a>
+                            </li> -->
+                            <li class="delete" title="DELETE">
+                              <a type="button" (click)="confirmerSuppression(item._id)"><i class="icon-trash"></i></a>
                             </li>
-                            <li class="details">
-                                <a href="#"> <i class="icon-eye"></i></a>
+                            <li class="details" title="VIEW COVER">
+                              <a *ngIf="!item.cover" href="#" target="_blank"> <i class="icon-eye"></i></a>
+                              <a *ngIf="item.cover" href="{{item.cover.url}}" target="_blank"> <i class="icon-eye"></i></a>
                               </li>
+              
                            
                           </div>
                     </td>
                   </tr>
-                  <tr>
-            
-                    <td>Giving tree</td>
-                    <td>Environment</td>
-                    <td >
-                        <div class="progress">
-                          <div class="progress-bar bg-primary" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </td>
-                    <td>0</td>
-                    <!-- <td>
-                        <span class="badge badge-danger">
-                            inactive
-                        </span>
-                    </td> -->
-                    <td>Jan 14 2022</td>
-                   
-                    <td>
-                        <div class="action">
-                            <li class="edit">
-                              <a href="#"><i class="icon-pencil-alt"></i></a>
-                            </li>
-                            <li class="delete">
-                              <a href="#"><i class="icon-trash"></i></a>
-                            </li>
-                            <li class="details">
-                                <a href="#"> <i class="icon-eye"></i></a>
-                              </li>
-                           
-                          </div>
-                    </td>
-                  </tr>
+                
+              
                 </tbody>
               </table>
             </div>
           </div>
-          <div class="row mt-3">
+          <!-- <div class="row mt-3">
             <nav aria-label="Page navigation example">
                 <ul class="pagination pagination-sm pagination-primary float-end">
                   <li class="page-item"><a class="page-link" href="javascript:void(0)">Previous</a></li>
@@ -137,7 +149,7 @@
                   <li class="page-item"><a class="page-link" href="javascript:void(0)">Next</a></li>
                 </ul>
               </nav>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

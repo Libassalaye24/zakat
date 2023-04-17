@@ -86,30 +86,22 @@ export class NavService implements OnDestroy {
     {
       title: "Dashboards",
       icon: "home",
-      type: "sub",
-      badgeType: "light-primary",
-      badgeValue: "2",
-      active: true,
-      children: [
-        { path: "/dashboard/default", title: "Default", type: "link" },
-        // { path: "/dashboard/ecommerce", title: "Ecommerce", type: "link" },
-        { path: "/dashboard/charity", title: "Charity", type: "link" },
-        // { path: "/dashboard/online-course", title: "Online course", type: "link" },
-        // { path: "/dashboard/crypto", title: "Crypto", type: "link" },
-        // { path: "/dashboard/social", title: "Social", type: "link" },
-      ],
+      type: "link",
+      path: "/dashboard"
     },
     {
-      title: "Campaign",
-      icon: "charts",
-      type: "sub",
-      badgeType: "light-primary",
-      badgeValue: "1",
-      active: false,
-      children: [
-        { path: "/campagne/list", title: "Campaign List", type: "link" },
-       
-      ],
+      title: "Project",
+      icon: "project",
+      type: "link",
+      path: "/campagne"
+     
+    },
+    {
+      title: "Contact",
+      icon: "user",
+      type: "link",
+      path: "/contact"
+     
     },
     {
       title: "Charity donation",

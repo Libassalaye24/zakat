@@ -66,6 +66,10 @@ export const content: Routes = [
     loadChildren: () => import("../../components/apps/campagne/campagne.module").then((m) => m.CampagneModule),
   },
   {
+    path: "contact",
+    loadChildren: () => import("../../components/apps/contact/contact.module").then((m) => m.ContactModule),
+  },
+  {
     path: "charity-donation",
     loadChildren: () => import("../../components/apps/charity-donation/charity-donation.module").then((m) => m.CharityDonationModule),
   },
