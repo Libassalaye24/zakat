@@ -5,9 +5,9 @@
             <div class="card-body success">
                 <span class="f-light">Total donation</span>
                 <div class="d-flex align-items-end gap-1">
-                  <h4>$2,435</h4>
+                  <h4>{{totalDon | number :'1.0-0'}} Fcfa</h4>
                   <span class="font-success f-12 f-w-500"
-                    ><i class="icon-arrow-up"></i><span>+50%</span></span
+                    ></span
                   >
                 </div>
                 <div class="bg-gradient">
@@ -20,13 +20,14 @@
     </div>
     <div class="col-3">
         <div class="card small-widget">
-            <div class="card-body danger">
-                <span class="f-light">Today'S donation</span>
+            <div class="card-body danger cursor-pointer">
+                <span class="f-light">Total zakat</span>
                 <div class="d-flex align-items-end gap-1">
-                  <h4>$2,435</h4>
+                  <h4>{{totalZakat | number :'1.0-0'}} Fcfa</h4>
                   <span class="font-danger f-12 f-w-500"
-                    ><i class="icon-arrow-down"></i><span>05%</span></span
+                    ></span
                   >
+                  <!-- <i class="icon-arrow-down"></i><span>05%</span> -->
                 </div>
                 <div class="bg-gradient">
                   <svg class="stroke-icon svg-fill">
@@ -39,7 +40,7 @@
       <div class="col-3">
         <div class="card small-widget">
             <div class="card-body primary">
-                <span class="f-light">Campaign rates</span>
+                <span class="f-light">Total campagne</span>
                 <div class="d-flex align-items-end gap-1">
                   <h4>$2,435</h4>
                   <span class="font-primary f-12 f-w-500"
@@ -57,7 +58,7 @@
       <div class="col-3">
         <div class="card small-widget">
             <div class="card-body primary">
-                <span class="f-light">New Donors</span>
+                <span class="f-light">Total demande</span>
                 <div class="d-flex align-items-end gap-1">
                   <h4>$2,435</h4>
                   <span class="font-primary f-12 f-w-500"
@@ -106,15 +107,15 @@
         <div class="col-4">
             <div class="card">
                 <div class="card-header card-no-border">
-                  <h5>Campaign</h5>
-                  <span class="f-light f-w-500 f-14">(Total profit growth of 30%)</span>
+                  <h5>Campagne</h5>
+                  <span class="f-light f-w-500 f-14">(Les types de campagnes)</span>
                 </div>
                 <div class="card-body pt-0">
                   <div class="monthly-profit">
                     <div id="profitmonthly">
                      <apx-chart
-                       [labels]="monthlyProfits.labels"
-                       [series]="monthlyProfits.series"
+                       [labels]="typeListChart"
+                       [series]="tabNbrType"
                        [chart]="monthlyProfits.chart"
                        [dataLabels]="monthlyProfits.dataLabels"
                        [legend]="monthlyProfits.legend"

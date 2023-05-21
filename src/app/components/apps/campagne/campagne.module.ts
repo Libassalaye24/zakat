@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CampagneListComponent } from './campagne-list/campagne-list.component';
 import { CampagneRoutingModule } from './campagne-routing.module';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+
 // import { BookmarksRoutingModule } from './bookmarks-routing.module';
 
 
@@ -12,7 +14,8 @@ import { CampagneRoutingModule } from './campagne-routing.module';
   ],
   imports: [
     CommonModule,
-    CampagneRoutingModule
+    CampagneRoutingModule,
+    FormsModule
   ]
 })
 export class CampagneModule { }

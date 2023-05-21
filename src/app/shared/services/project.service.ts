@@ -18,14 +18,14 @@ export class ProjectService {
   {
     this.headers = new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('token')});
   }
-  statusList = ["PENDING" , "VALID" , "INVALID"];
-  typeList = ["service" , "it" , "production" , "construction"];
-  getAll(): Observable<Project[]> {
+  statusList = [{text:"En cours" , value: "PENDING"} , {text: "Validé" , value: "VALID"} , {text: "Non validé" , value: "INVALID"}];
+  typeList = [{text: "service" , value: "service"} , {text:"it" , value: "it"} , {text:"production" , value:"production"} , {text:"construction" ,value:"construction"}];
+  
+
+  getAll(filters:any = ''): Observable<Project[]> {
     console.log(this.api);
-    // const headers = new HttpHeaders({
-    //   'Authorization': 'Bearer ' + localStorage.getItem('token')
-    // });
-    return this.http.get<Project[]>(this.api , { headers : this.headers }).pipe(
+  
+    return this.http.get<Project[]>(`${this.api}${filters}` , { headers : this.headers }).pipe(
       catchError((error) => {
         console.log("error serveur!!");
         this.toastr.error("Une erreur est survenue.");
@@ -47,8 +47,8 @@ export class ProjectService {
 
     return this.http.put(`${this.api}/${id}` , {status : status}, {headers : this.headers} ).pipe(
       catchError((error) => {
-        console.log("error serveur!! "+JSON.stringify(error));
-        this.toastr.error("Status : Une erreur est survenue.");
+        console.log("error serveur!! "+JSON.stringify(error.error));
+        this.toastr.error(`Erreur : ${error.error.data ?? 'une erreur est survenue'}.`);
         return throwError(error);
       })
     )

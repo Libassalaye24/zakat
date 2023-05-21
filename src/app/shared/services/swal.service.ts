@@ -23,7 +23,8 @@ export class SwalService implements OnInit{
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: confirmButtonText
+      confirmButtonText: confirmButtonText,
+      cancelButtonText: cancelButtonText
     });
   }
 

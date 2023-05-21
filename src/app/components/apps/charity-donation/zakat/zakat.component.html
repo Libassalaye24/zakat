@@ -2,7 +2,7 @@
     <div class="page-title">
       <div class="row">
         <div class="col-6">
-          <h3>Donation</h3>
+          <h3>Zakat</h3>
         </div>
         <div class="col-6">
           <ol class="breadcrumb">
@@ -14,7 +14,7 @@
               </a>
             </li> -->
             <li class="breadcrumb-item">Charity donation</li>
-            <li class="breadcrumb-item active">Dons</li>
+            <li class="breadcrumb-item active">Zakat</li>
           </ol>
         </div>
       </div>
@@ -30,18 +30,19 @@
       <div class="card">
         <div class="card-header">
 
-          <!-- <h5>Zakat transactions</h5> -->
-          <div class="row">
-              <form class="form-inline gap-2" id="form_filterdon">
-                  <div class="col-3">
-                      <div class="">
-                        <label for="reference" class="form-label mb-1">Rechercher par référence</label>
-                        <input type="text"  (input)="filterListByRef($event)" (cut)="filterListByRef($event)"  class="form-control "  id="reference"  placeholder="ref">
-                      </div>
-                  </div>
-              </form>
-          </div>
-          </div>
+            <!-- <h5>Zakat transactions</h5> -->
+            <div class="row">
+                <form class="form-inline gap-2" method="post" id="form_filterzakat" >
+                    <div class="col-3">
+                        <div class="">
+                            <label for="reference" class="form-label mb-1">Rechercher par référence</label>
+                            <input type="text"  (input)="filterListByRef($event)" (cut)="filterListByRef($event)"  class="form-control "  id="reference"  placeholder="ref">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <div class="card-body">
           <div class="product-list-custom custom-datatable">
             <div class="table-responsive">

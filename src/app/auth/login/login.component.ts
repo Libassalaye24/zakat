@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
    }
   ngOnInit() {}
   login() {
-    this.authService.login(`221${this.phone}`, this.password)
+    this.authService.login(`${this.phone}`, this.password)
       
       .then(() => {
         this.router.navigate(['/dashboard']);

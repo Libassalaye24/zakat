@@ -108,20 +108,21 @@ export class NavService implements OnDestroy {
       icon: "bookmark",
       type: "sub",
       badgeType: "light-primary",
-      badgeValue: "1",
+      badgeValue: "2",
       active: false,
       children: [
-        { path: "/charity-donation/donators", title: "Donators", type: "link" },
+        { path: "/charity-donation/dons", title: "Don", type: "link" },
+        { path: "/charity-donation/zakat", title: "Zakat", type: "link" },
        
       ],
     },
-    {
-      path: "/payement/type",
-      title: "Payments type",
-      icon: "ecommerce",
-      type: "link",
-      // campagne: true,
-    },
+    // {
+    //   path: "/payement/type",
+    //   title: "Payments type",
+    //   icon: "ecommerce",
+    //   type: "link",
+    //   // campagne: true,
+    // },
     // {
     //   title: "Widgets",
     //   icon: "widget",

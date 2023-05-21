@@ -33,13 +33,14 @@
           <!-- <h5>Project List</h5> -->
           <!-- <span>Search your product from here..</span> -->
           <div class="row">
+            <form class="form-inline gap-2" id="form_filterproject" >
             <div class="col-3">
               <div class="">
                 <label for="formFile" class="form-label">Filter by type</label>
-                <select class="form-select" aria-label="Default select example">
-                  <option selected>Type</option>
-                  <option *ngFor="let item of typeList" value="{{item}}" >
-                    {{item}}
+                <select [(ngModel)]="filter.type" class="form-select" aria-label="Default select example" id="type_project" name="project">
+                  <option value="" selected>Type</option>
+                  <option *ngFor="let item of typeList" value="{{item.value}}" >
+                    {{item.text}}
                     </option>
                 </select>
               </div>
@@ -48,23 +49,28 @@
             <div class="col-3">
               <div class="">
                 <label for="formFile" class="form-label">Filter by status</label>
-                <select  name="selectedStatus"  class="form-select" aria-label="Default select example">
+                <select [(ngModel)]="filter.status"  name="selectedStatus"  class="form-select" aria-label="Default select example">
                   <option value="" selected="selected">Status</option>
-                  <option *ngFor="let item of statusList" value="{{item}}" >
-                    {{item}}
+                  <option *ngFor="let item of statusList" value="{{item.value}}" >
+                    {{item.text}}
                     </option>
                 </select>
               </div>
             </div>
             <div class="col-2">
-             <div style="margin-top: 20%;" class=" d-flex gap-2">
-              <button type="button" class="btn btn-primary" >Filter</button>
-              <button type="button" class="btn btn-danger">Reset</button>
+             <div style="margin-top: 15.5%;" class=" d-flex gap-2">
+              <button (click)="applyFilter()" type="button"  class="btn btn-primary" >
+                <i class="icon-search"></i>
+              </button>
+              <button (click)="unsetFilters()" type="button" class="btn btn-danger">
+                <i class="icon-filter"></i>
+              </button>
              </div>
             </div>
             <div class="col-4">
               
             </div>
+          </form>
           </div>
         </div>
         <div class="card-body">
@@ -74,37 +80,42 @@
               <table class="table">
                 <thead>
                   <tr>
+                    <!-- <th scope="col">Image</th> -->
                     <th scope="col">Type</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Amount</th>
-                    <th scope="col">Progress</th>
+                    <th scope="col">Nom</th>
+                    <!-- <th scope="col">Description</th> -->
+                    <th scope="col">Montant</th>
+                    <th scope="col">Progression</th>
                     <!-- <th scope="col">Donors</th> -->
                     <th scope="col">Status</th>
-                    <th scope="col">Created-at</th>
+                    <th scope="col">Date création</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let item of projects" >
-            
+                  <tr *ngFor="let item of filterData" >
+                    <!-- <td>
+                      <img [src]="item.cover.url" class="me-2 rounded w-50 h-50" />
+                    </td> -->
                     <td>{{ item.type | titlecase}}</td>
-                    <td>{{ item.description | titlecase }}</td>
+                    <td>{{ item.name | titlecase}}</td>
+                    <!-- <td>{{ item.description | titlecase }}</td> -->
                     <td>{{ item.amount | number: '1.0-0' }} FCFA</td>
                     <td >
                         <div class="progress mt-1">
-                          <div class="progress-bar bg-primary w-{{item.pourcentage}}" style="width:{{item.pourcentage}}%" role="progressbar"   aria-valuenow="{{item.pourcentage}}" aria-valuemin="0" aria-valuemax="100">
+                          <div class="progress-bar bg-primary" [ngStyle]="{'width.%': item.pourcentage}"  role="progressbar"   aria-valuenow="{{item.pourcentage}}" aria-valuemin="0" aria-valuemax="100">
                           </div>
                         </div>
                     </td>
                     <td>
                         <span *ngIf="item.status == 'PENDING'" class="badge badge-primary">
-                            {{ item.status }}
+                            En attente
                         </span>
                         <span *ngIf="item.status == 'VALID'" class="badge badge-success">
-                          {{ item.status }}
+                          Validé
                         </span>
-                        <span *ngIf="item.status == 'INVALID'" class="badge badge-error">
-                          {{ item.status }}
+                        <span *ngIf="item.status == 'INVALID'" class="badge badge-danger">
+                          Annulé
                         </span>
                     </td>
                     <td>
@@ -115,12 +126,17 @@
                     <td>
                       
                         <div class="action gap-2">
-                            <li *ngIf="item.status == 'PENDING'"  (click)="confirmerStatusChange(item._id , 'VALIDATE')" class="validate text-success " title="VALIDATE">
-                              <a type="button"><i class="icon-check"></i></a>
+                            <li *ngIf="item.status == 'PENDING'"   class="validate text-success " title="VALIDER">
+                              <a type="button" (click)="confirmerStatusChangeValidate(item.id , 'VALID')"><i class="icon-check"></i></a>
                             </li>
-                            <!-- <li *ngIf="item.status == 'VALID'" class="anuler">
-                              <a href="#"><i class="icon-check"></i></a>
-                            </li> -->
+                            <li *ngIf="item.status == 'INVALID'"   class="validate text-success " title="VALIDER">
+                              <a type="button" (click)="confirmerStatusChangeValidate(item.id , 'VALID')"><i class="icon-check"></i></a>
+                            </li>
+                            <li *ngIf="item.status == 'VALID'"  class="anuler text-danger" title="ANNULER">
+                              <a type="button" (click)="confirmerStatusChange(item.id , 'INVALID')">
+                                <i class="icon-close"></i>
+                              </a>
+                            </li>
                             <li class="delete" title="DELETE">
                               <a type="button" (click)="confirmerSuppression(item._id)"><i class="icon-trash"></i></a>
                             </li>

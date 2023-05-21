@@ -3678,7 +3678,8 @@ body {
           }
 
           .form-control {
-            background-color: $dark-body-background;
+            background-color: #fff;
+            // background-color: $dark-body-background;
             color: $dark-all-font-color;
             border: 1px solid $dark-border-color;
             &.touchspin {

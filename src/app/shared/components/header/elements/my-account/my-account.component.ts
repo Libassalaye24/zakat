@@ -8,12 +8,16 @@ import { AuthService } from "src/app/shared/services/auth.service";
   styleUrls: ["./my-account.component.scss"],
 })
 export class MyAccountComponent implements OnInit {
-  public userName: string;
+  public userName: string = "userConnect";
+  public user : any;
   public profileImg: "assets/images/dashboard/profile.jpg";
 
   constructor(public router: Router , private authService: AuthService) {
     if (JSON.parse(localStorage.getItem("user"))) {
-    } else {
+      // this.userName = localStorage.getItem("user")['name'];
+      console.log(localStorage.getItem("user"))
+      this.user = JSON.parse(localStorage.getItem("user"));
+      console.log(this.user.name)
     }
   }
 
